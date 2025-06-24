@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
@@ -19,17 +20,9 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(
-<<<<<<< HEAD
         Post, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
-=======
-        Post, on_delete=models.CASCADE, related_name="comments" 
-        )
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="commenter"
-        )
->>>>>>> 7923a64 (Migrate changes)
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
